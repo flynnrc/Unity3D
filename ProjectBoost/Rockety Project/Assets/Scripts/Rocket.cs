@@ -14,6 +14,7 @@ public class Rocket : MonoBehaviour {
     [SerializeField] ParticleSystem mainEngineParticles;
     [SerializeField] ParticleSystem successParticles;
     [SerializeField] ParticleSystem deathParticles;
+    [SerializeField] float particleInvokeMethodTime = 2f;
 
     enum State
     {
@@ -53,16 +54,18 @@ public class Rocket : MonoBehaviour {
             case "Friendly":
                 break;
             case "Finish":
-                TriggerTransitionChanges(State.Transcending, success, "LoadNextLevel", 2f);
+                TriggerTransitionChanges(State.Transcending, success, "LoadNextLevel", particleInvokeMethodTime, successParticles);
                 break;
             default:
-                TriggerTransitionChanges(State.Dying, death, "LoadFirstLevel", 2f);
+                TriggerTransitionChanges(State.Dying, death, "LoadFirstLevel", particleInvokeMethodTime, deathParticles);
                 break;
         }
     }
 
-    private void TriggerTransitionChanges(State newState, AudioClip clip, string invokeMethod, float invokeMethodTime)
+    private void TriggerTransitionChanges(State newState, AudioClip clip, string invokeMethod, float invokeMethodTime, ParticleSystem particleSystem)
     {
+        //print(clip.name);
+        particleSystem.Play();
         state = newState;
         audioSource.Stop();
         audioSource.PlayOneShot(clip);
