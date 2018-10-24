@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour {
@@ -14,7 +15,9 @@ public class Rocket : MonoBehaviour {
     [SerializeField] ParticleSystem mainEngineParticles;
     [SerializeField] ParticleSystem successParticles;
     [SerializeField] ParticleSystem deathParticles;
-    [SerializeField] float particleInvokeMethodTime = 2f;
+    [SerializeField] float invokeMethodDelay = 2f;
+
+    bool collisionsDisabled = false;
 
     enum State
     {
@@ -37,7 +40,24 @@ public class Rocket : MonoBehaviour {
         {
             ProcessInput();
         }
-	}
+        if (Debug.isDebugBuild)
+        {
+            RespondToDebugKeys();
+        }
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if(Input.GetKeyDown(KeyCode.C))
+        {
+            //toggle
+            collisionsDisabled = !collisionsDisabled;
+        }
+    }
 
     private void ProcessInput()
     {
@@ -47,34 +67,41 @@ public class Rocket : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive) { return; }
+        if (state != State.Alive || collisionsDisabled) { return; }
 
         switch (collision.gameObject.tag)
         {
             case "Friendly":
                 break;
             case "Finish":
-                TriggerTransitionChanges(State.Transcending, success, "LoadNextLevel", particleInvokeMethodTime, successParticles);
+                TriggerTransitionChanges(State.Transcending, success, "LoadNextLevel", invokeMethodDelay, successParticles);
                 break;
             default:
-                TriggerTransitionChanges(State.Dying, death, "LoadFirstLevel", particleInvokeMethodTime, deathParticles);
+                TriggerTransitionChanges(State.Dying, death, "LoadFirstLevel", invokeMethodDelay, deathParticles);
                 break;
         }
     }
 
-    private void TriggerTransitionChanges(State newState, AudioClip clip, string invokeMethod, float invokeMethodTime, ParticleSystem particleSystem)
+    private void TriggerTransitionChanges(State newState, AudioClip clip, string invokeMethod, float invokeMethodDelay, ParticleSystem particleSystem)
     {
         //print(clip.name);
         particleSystem.Play();
         state = newState;
         audioSource.Stop();
         audioSource.PlayOneShot(clip);
-        Invoke(invokeMethod, invokeMethodTime);
+        Invoke(invokeMethod, invokeMethodDelay);
     }
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(1);
+        var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        var nScenes = SceneManager.sceneCountInBuildSettings;
+        int nextSceneIndex = currentSceneIndex + 1;
+        if(nextSceneIndex == nScenes)
+        {
+            nextSceneIndex = 0;
+        }
+        SceneManager.LoadScene(nextSceneIndex);
     }
 
     private void LoadFirstLevel()
@@ -97,7 +124,7 @@ public class Rocket : MonoBehaviour {
 
     private void ApplyThrust()
     {
-        rigidBody.AddRelativeForce(Vector3.up * mainThrust);
+        rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(mainEngine);
