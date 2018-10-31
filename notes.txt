@@ -1,0 +1,2 @@
+//1.) https://youtu.be/pvjTN9saZU4
+//https://community.gamedev.tv/t/smooth-waypoint-follower-script/59854

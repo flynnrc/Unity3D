@@ -34,6 +34,14 @@ public class Player : MonoBehaviour {
         ProcessTranslation();
         ProcessRotation();
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        //print("collision detected");
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        print("trigger");
+    }
 
     private void ProcessRotation()
     {
