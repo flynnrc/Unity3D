@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23004971389638754}
   - component: {fileID: 114457389940155360}
   m_Layer: 0
-  m_Name: Ship_02 (1)
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
