@@ -854,6 +854,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4755965790930500, guid: a9389c2a194fc1c4d805db26792f623b,
     type: 2}
   m_PrefabInternal: {fileID: 1157743208}
+--- !u!1 &1276395538 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1687686059293954, guid: b6ca4200630a9574d9322da052bfee9a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1753848583}
+--- !u!1 &1314485524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1846177905474880, guid: b6ca4200630a9574d9322da052bfee9a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1753848583}
 --- !u!1001 &1373885816
 Prefab:
   m_ObjectHideFlags: 0
@@ -1046,6 +1056,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 534669905}
     m_Modifications:
+    - target: {fileID: 114864035875568666, guid: b6ca4200630a9574d9322da052bfee9a,
+        type: 2}
+      propertyPath: guns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4804567910585434, guid: b6ca4200630a9574d9322da052bfee9a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.26
@@ -1082,6 +1097,24 @@ Prefab:
       propertyPath: m_Name
       value: Player Ship
       objectReference: {fileID: 0}
+    - target: {fileID: 1687686059293954, guid: b6ca4200630a9574d9322da052bfee9a, type: 2}
+      propertyPath: m_Name
+      value: Gun Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 1846177905474880, guid: b6ca4200630a9574d9322da052bfee9a, type: 2}
+      propertyPath: m_Name
+      value: Gun Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 114864035875568666, guid: b6ca4200630a9574d9322da052bfee9a,
+        type: 2}
+      propertyPath: guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 1276395538}
+    - target: {fileID: 114864035875568666, guid: b6ca4200630a9574d9322da052bfee9a,
+        type: 2}
+      propertyPath: guns.Array.data[1]
+      value: 
+      objectReference: {fileID: 1314485524}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6ca4200630a9574d9322da052bfee9a, type: 2}
   m_IsPrefabAsset: 0

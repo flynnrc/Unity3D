@@ -10,9 +10,10 @@ public class Enemy : MonoBehaviour {
 
     ScoreBoard scoreBoard;
     [SerializeField] int pointsForKilling;
+    [SerializeField] int hp = 10;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
         AddBoxCollider();
@@ -31,10 +32,16 @@ public class Enemy : MonoBehaviour {
 
     void OnParticleCollision(GameObject other)
     {
-        //print("particles collided with " + gameObject.name);
-        GameObject fx = Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
-        fx.transform.parent = parentTransform;
-        Destroy(gameObject);
-        scoreBoard.AddScoreByAmount(pointsForKilling);
+        //todo consider hit effects
+        hp--;
+        if (hp <= 0)
+        {
+            //print("particles collided with " + gameObject.name);
+            GameObject fx = Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
+            fx.transform.parent = parentTransform;
+            Destroy(gameObject);
+            scoreBoard.AddScoreByAmount(pointsForKilling);
+        }
+
     }
 }
