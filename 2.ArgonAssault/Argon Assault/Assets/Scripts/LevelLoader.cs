@@ -33,4 +33,9 @@ public class LevelLoader : MonoBehaviour {
     {
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
+
+    public void RestartThisLevel()
+    {
+        SceneManager.LoadScene(currentSceneIndex);
+    }
 }

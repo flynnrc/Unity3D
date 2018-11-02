@@ -5,23 +5,26 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 
-public class Player : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
-    [Tooltip("In m^s-1")] [SerializeField] float xSpeed = 10f;
-    [Tooltip("In m^s-1")] [SerializeField] float ySpeed = 10f;
-    [SerializeField] float xRange = 5f;
-    [SerializeField] float yRange = 3f;
+    [Header("General")]
+    [Tooltip("In m^s-1")] [SerializeField] float xControlSpeed = 10f;
+    [Tooltip("In m^s-1")] [SerializeField] float yControlSpeed = 10f;
+    [Tooltip("In m")] [SerializeField] float xRange = 5f;
+    [Tooltip("In m")] [SerializeField] float yRange = 3f;
 
-    //pitch
+    [Header("Screen Position")]
     [SerializeField] float positionPitchFactor = -5f;
-    [SerializeField] float controlPitchFactor = -20f;
-    //yaw
     [SerializeField] float positionYawFactor = 5f;
-    //roll
+
+    [Header("Control-Throw")]
+    [SerializeField] float controlPitchFactor = -20f;
     [SerializeField] float rollDueToControlThrow = -20f;
 
     float xThrow;
     float yThrow;
+
+    bool controlsAreEnabled = true;
 
     // Use this for initialization
     void Start () {
@@ -31,16 +34,15 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        ProcessTranslation();
-        ProcessRotation();
+        if (controlsAreEnabled) {
+            ProcessTranslation();
+            ProcessRotation();
+        }
     }
-    private void OnCollisionEnter(Collision collision)
+
+    void OnPlayerDeath()//called by string reference
     {
-        //print("collision detected");
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        print("trigger");
+        controlsAreEnabled = false;
     }
 
     private void ProcessRotation()
@@ -64,8 +66,8 @@ public class Player : MonoBehaviour {
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
 
 
-        float xOffsetThisFrame = xThrow * xSpeed * Time.deltaTime;//xThrow(avg .66) * 80  frames = 52.8
-        float yOffsetThisFrame = yThrow * ySpeed * Time.deltaTime;
+        float xOffsetThisFrame = xThrow * xControlSpeed * Time.deltaTime;//xThrow(avg .66) * 80  frames = 52.8
+        float yOffsetThisFrame = yThrow * yControlSpeed * Time.deltaTime;
 
         float rawNewXPos = transform.localPosition.x + xOffsetThisFrame;
         float rawNewYPos = transform.localPosition.y + yOffsetThisFrame;

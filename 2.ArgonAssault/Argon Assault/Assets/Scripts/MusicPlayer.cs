@@ -6,7 +6,14 @@ public class MusicPlayer : MonoBehaviour {
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject.GetComponent<AudioSource>());
+        if (FindObjectsOfType<MusicPlayer>().Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject.GetComponent<AudioSource>());
+        }
     }
 
     // Use this for initialization
