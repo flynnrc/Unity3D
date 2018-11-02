@@ -7,7 +7,6 @@ public class ScoreBoard : MonoBehaviour {
 
     int score = 0;
     Text scoreText;
-    [SerializeField] int defaultScorePerHit = 12;
 
 	// Use this for initialization
 	void Start () {
@@ -20,9 +19,9 @@ public class ScoreBoard : MonoBehaviour {
 		
 	}
 
-    public void DefaultScoreHit()
+    public void AddScoreByAmount(int incomingScoreValue)
     {
-        score = score + defaultScorePerHit;
+        score = score += incomingScoreValue;
         scoreText.text = score.ToString();
     }
 }

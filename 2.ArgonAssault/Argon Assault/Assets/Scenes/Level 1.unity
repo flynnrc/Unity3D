@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 416342912}
   - component: {fileID: 416342914}
   - component: {fileID: 416342913}
+  - component: {fileID: 416342915}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -379,6 +380,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 416342911}
   m_CullTransparentMesh: 0
+--- !u!114 &416342915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 416342911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c63ce26ec771fb4bba6b2e9e5a38871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &452752054
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,27 +679,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4755965790930500, guid: a9389c2a194fc1c4d805db26792f623b, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 15.000094
-      objectReference: {fileID: 0}
-    - target: {fileID: 4755965790930500, guid: a9389c2a194fc1c4d805db26792f623b, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 15.000034
-      objectReference: {fileID: 0}
-    - target: {fileID: 4755965790930500, guid: a9389c2a194fc1c4d805db26792f623b, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 15.00007
-      objectReference: {fileID: 0}
-    - target: {fileID: 1742478805283430, guid: a9389c2a194fc1c4d805db26792f623b, type: 2}
-      propertyPath: m_Name
-      value: Ship_02 (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 114457389940155360, guid: a9389c2a194fc1c4d805db26792f623b,
         type: 2}
       propertyPath: parentTransform
       value: 
       objectReference: {fileID: 1156329669}
+    - target: {fileID: 1742478805283430, guid: a9389c2a194fc1c4d805db26792f623b, type: 2}
+      propertyPath: m_Name
+      value: Ship_02 (6)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9389c2a194fc1c4d805db26792f623b, type: 2}
   m_IsPrefabAsset: 0
