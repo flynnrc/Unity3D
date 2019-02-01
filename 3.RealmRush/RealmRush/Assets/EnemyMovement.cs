@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
-    [SerializeField] List<Waypoints> path;
+    [SerializeField] List<Waypoint> path;
 
 	// Use this for initialization
 	void Start ()
