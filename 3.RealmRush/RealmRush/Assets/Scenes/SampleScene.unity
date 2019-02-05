@@ -755,6 +755,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4016182607732266, guid: 8c5535d9362b4b44dbeac1dfbe572039,
     type: 2}
   m_PrefabInternal: {fileID: 1096963418}
+--- !u!114 &1132410384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114703293174827650, guid: 8c5535d9362b4b44dbeac1dfbe572039,
+    type: 2}
+  m_PrefabInternal: {fileID: 273283623}
+  m_Script: {fileID: 11500000, guid: 59b8a049868013843bec592a3c7b729b, type: 3}
 --- !u!1001 &1190903212
 Prefab:
   m_ObjectHideFlags: 0
@@ -1226,6 +1232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1879681744}
+  - component: {fileID: 1879681745}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -1262,6 +1269,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1879681745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1879681743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4e3abe4a952d74f9b488f7e5448bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWaypoint: {fileID: 1773592240}
+  endWaypoint: {fileID: 1132410384}
+  isRunning: 1
 --- !u!1001 &1902129056
 Prefab:
   m_ObjectHideFlags: 0
