@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 136078087318584548}
   - component: {fileID: 114095815369786516}
   - component: {fileID: 114680757559672302}
+  - component: {fileID: 114345251114192222}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1767,7 +1768,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004304332080352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 1.136, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4495642137585100}
@@ -2497,6 +2498,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114345251114192222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1004304332080352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7077162633ee94ba7462931ace108c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkMoveStopRadius: 0.2
 --- !u!114 &114680757559672302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2513,8 +2526,8 @@ MonoBehaviour:
   m_JumpPower: 6
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 1
-  m_AnimSpeedMultiplier: 1
+  m_MoveSpeedMultiplier: 4
+  m_AnimSpeedMultiplier: 5
   m_GroundCheckDistance: 0.3
 --- !u!136 &136078087318584548
 CapsuleCollider:

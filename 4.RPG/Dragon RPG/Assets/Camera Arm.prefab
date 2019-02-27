@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 20858942992306220}
   - component: {fileID: 81828567072769366}
   - component: {fileID: 114383860338435616}
+  - component: {fileID: 114860730402822520}
+  - component: {fileID: 114648058213630682}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -37,8 +39,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4003420046619544}
-  - component: {fileID: 114783925692456880}
   - component: {fileID: 114818057251517112}
+  - component: {fileID: 114762983204392818}
+  - component: {fileID: 114783925692456880}
   - component: {fileID: 114006762484184574}
   m_Layer: 0
   m_Name: Camera Arm
@@ -153,6 +156,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8b2b3e2091858479a610d870111117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114648058213630682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272911213244038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97d9a24f33b5cf42856bc5008a0b043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114762983204392818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1331407450070570}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860dc01e8021f034e8c44e1f1ef8d806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerPriorities: 0900000008000000
+  distanceToBackground: 100
 --- !u!114 &114783925692456880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,3 +208,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981c105c01cfc9f47b202be41f9c6814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114860730402822520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272911213244038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860dc01e8021f034e8c44e1f1ef8d806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerPriorities: 0900000008000000
+  distanceToBackground: 100
