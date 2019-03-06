@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 95797225851777084}
   - component: {fileID: 54289642896137174}
   - component: {fileID: 136078087318584548}
-  - component: {fileID: 114095815369786516}
   - component: {fileID: 114680757559672302}
   - component: {fileID: 114345251114192222}
   m_Layer: 0
@@ -1767,8 +1766,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004304332080352}
-  m_LocalRotation: {x: 0, y: 0.8978338, z: 0, w: -0.44033456}
-  m_LocalPosition: {x: 0.1953074, y: 0, z: -11.582551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4495642137585100}
@@ -2487,17 +2486,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114095815369786516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1004304332080352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114345251114192222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2526,8 +2514,8 @@ MonoBehaviour:
   m_JumpPower: 6
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 4
-  m_AnimSpeedMultiplier: 5
+  m_MoveSpeedMultiplier: 0.7
+  m_AnimSpeedMultiplier: 1.5
   m_GroundCheckDistance: 0.3
 --- !u!136 &136078087318584548
 CapsuleCollider:
