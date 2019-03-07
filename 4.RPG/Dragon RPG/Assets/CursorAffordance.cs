@@ -16,12 +16,13 @@ public class CursorAffordance : MonoBehaviour {
     // Use this for initialization
     void Start () {
         cameraRaycaster = GetComponent<CameraRaycaster>();
+        cameraRaycaster.layerChangeObservers += OnLayerChanged;
 	}
 	
 	// Update is called once per frame
-	void LateUpdate () {//todo convert this to use observer pattern to notify of a change rather than checking per frame
-
-        switch (cameraRaycaster.layerHit)
+	void OnLayerChanged(Layer newLayer) {//todo convert this to use observer pattern to notify of a change rather than checking per frame
+        print("layer changed called");
+        switch (newLayer)
         {
             case Layer.Walkable:
                 Cursor.SetCursor(walkCursor, hotSpot, cursorMode);
@@ -40,18 +41,10 @@ public class CursorAffordance : MonoBehaviour {
         }
     }
 
+    //todo consider de registering from event on leaving all game scenes
+
     private void UpdateCursorTexture(Texture2D texture)
     {
         Cursor.SetCursor(texture, hotSpot, cursorMode);
     }
-
-    //void OnMouseEnter()
-    //{
-    //    Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-    //}
-
-    //void OnMouseExit()
-    //{
-    //    Cursor.SetCursor(null, Vector2.zero, cursorMode);
-    //}
 }
