@@ -98,9 +98,9 @@ NavMeshSettings:
     serializedVersion: 2
     agentTypeID: 0
     agentRadius: 0.5
-    agentHeight: 2
-    agentSlope: 35
-    agentClimb: 0.4
+    agentHeight: 3
+    agentSlope: 40.2
+    agentClimb: 0.5
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 40
@@ -111,7 +111,7 @@ NavMeshSettings:
     accuratePlacement: 1
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: a72f482d22c6ca6449560becdd703ade, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 92be9aac6dd351647a793818700886b1, type: 2}
 --- !u!1001 &2747180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1838,10 +1838,5 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2099066248}
-    - target: {fileID: 5634280959236306512, guid: 4b4aa8ccbc1bb0f4f88b0b083d3db5df,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b4aa8ccbc1bb0f4f88b0b083d3db5df, type: 3}
