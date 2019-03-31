@@ -1488,6 +1488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRange: 2
+  timeBetweenAttacks: 1
 --- !u!1001 &2031467104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1958,3 +1959,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c53ea0bd9ddfa4aa8d383022d284c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8873557970824782768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8873557970824782762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0083c0a74dd8b74293e722d9c825c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
