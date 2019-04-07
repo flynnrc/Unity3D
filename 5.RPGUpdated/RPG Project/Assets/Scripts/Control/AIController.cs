@@ -14,6 +14,8 @@ public class AIController : MonoBehaviour
     GameObject player;
 
     Vector3 guardLocation;
+    float timeSinceLastSawPlayer = Mathf.Infinity;
+    [SerializeField] float suspicionTime = 5f;
 
     private void Start()
     {
@@ -29,13 +31,35 @@ public class AIController : MonoBehaviour
         if(health.isAlive != true) { return; }
         if (InAttackRangeOfPlayer() && fighter.CanAttack(player))
         {
-            fighter.Attack(player);
+            timeSinceLastSawPlayer = 0;
+            AttackBehavior();
+        }
+        else if (timeSinceLastSawPlayer <= suspicionTime)
+        {
+            SuspicionBehavior();
         }
         else
         {
-            fighter.Cancel();
-            thisMover.StartMoveAction(guardLocation);//consider look at as well
+            GuardPositionBehavior();
         }
+
+        timeSinceLastSawPlayer += Time.deltaTime;
+    }
+
+    private void SuspicionBehavior()
+    {
+        GetComponent<ActionScheduler>().CancelCurrentAction();
+    }
+
+    private void GuardPositionBehavior()
+    {
+        fighter.Cancel();
+        thisMover.StartMoveAction(guardLocation);//consider look at as well
+    }
+
+    private void AttackBehavior()
+    {
+        fighter.Attack(player);
     }
 
     private float DistanceToPlayer()
