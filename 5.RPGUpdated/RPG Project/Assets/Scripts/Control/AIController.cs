@@ -1,5 +1,6 @@
 ﻿using RPG.Combat;
 using RPG.Core;
+using RPG.Movement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,18 @@ public class AIController : MonoBehaviour
     [SerializeField] float chaseDistance = 5f;
     Fighter fighter;
     Health health;
+    Mover thisMover;
     GameObject player;
+
+    Vector3 guardLocation;
 
     private void Start()
     {
         fighter = GetComponent<Fighter>();
         health = GetComponent<Health>();
         player = GameObject.FindWithTag("Player");
+        guardLocation = transform.position;
+        thisMover = GetComponent<Mover>();
     }
 
     private void Update()
@@ -28,6 +34,7 @@ public class AIController : MonoBehaviour
         else
         {
             fighter.Cancel();
+            thisMover.StartMoveAction(guardLocation);//consider look at as well
         }
     }
 
