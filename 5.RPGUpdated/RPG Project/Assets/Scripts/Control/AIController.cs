@@ -23,6 +23,8 @@ public class AIController : MonoBehaviour
     int currentWaypointIndex = 0;
     [SerializeField] float waypointDwellTime = 3f;
     float timeSinceArrivedAtWaypoint = Mathf.Infinity;
+    [Range(0,1)]
+    [SerializeField] float patrolSpeedFraction = 0.2f;
 
 
     private void Start()
@@ -78,7 +80,7 @@ public class AIController : MonoBehaviour
         }
         if(IsDwellTimeReached())
         {
-            thisMover.StartMoveAction(nextPos);//consider look at as well
+            thisMover.StartMoveAction(nextPos, patrolSpeedFraction);//consider look at as well
         }
         
     }
