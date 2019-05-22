@@ -4,59 +4,72 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Portal : MonoBehaviour
+namespace RPG.SceneManagement
 {
-    enum DestinationIdentifier
+    public class Portal : MonoBehaviour
     {
-        A, B, C, D, E
-    }
-
-    [SerializeField] int sceneIndexToLoad = -1;
-    [SerializeField] Transform spawnPoint;
-    [SerializeField] DestinationIdentifier destination;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player")
+        enum DestinationIdentifier
         {
-            StartCoroutine(Transition());
-        }
-    }
-
-    private IEnumerator Transition()
-    {
-        if(sceneIndexToLoad < 0)
-        {
-            //no scene indexes below zero, need to fix in editor
-            Debug.LogError("Scene to load not set.");
-            yield break;
+            A, B, C, D, E
         }
 
-        DontDestroyOnLoad(gameObject);//don't destroy onload only works at root level of the scene
-        yield return SceneManager.LoadSceneAsync(sceneIndexToLoad);
-        //print("Scene Loaded");
+        [SerializeField] int sceneToLoad = -1;
+        [SerializeField] Transform spawnPoint;
+        [SerializeField] DestinationIdentifier destination;
+        [SerializeField] float fadeOutTime = 1f;
+        [SerializeField] float fadeInTime = 2f;
+        [SerializeField] float fadeWaitTime = 0.5f;
 
-        Portal otherPortal = GetOtherPortal();
-        UpdatePlayerPosition(otherPortal);
-
-        Destroy(gameObject);
-    }
-
-    private void UpdatePlayerPosition(Portal otherPortal)
-    {
-        GameObject player = GameObject.FindWithTag("Player");
-        player.transform.position = otherPortal.spawnPoint.position;
-        player.transform.rotation = otherPortal.spawnPoint.rotation;
-    }
-
-    private Portal GetOtherPortal()
-    {
-        foreach(var portal in FindObjectsOfType<Portal>())
+        private void OnTriggerEnter(Collider other)
         {
-            if (portal == this || portal.destination != destination) { continue; }
-            return portal;
+            if (other.tag == "Player")
+            {
+                StartCoroutine(Transition());
+            }
         }
 
-        return null;
+        private IEnumerator Transition()
+        {   //todo bug with multiple portals if multiple portals spawn and get placed into dontdestroyonload
+            if (sceneToLoad < 0)
+            {
+                Debug.LogError("Scene to load not set.");
+                yield break;
+            }
+
+            DontDestroyOnLoad(gameObject);
+
+            Fader fader = FindObjectOfType<Fader>();
+
+            yield return fader.FadeOut(fadeOutTime);
+            yield return SceneManager.LoadSceneAsync(sceneToLoad);
+
+            Portal otherPortal = GetOtherPortal();
+            UpdatePlayer(otherPortal);
+
+            yield return new WaitForSeconds(fadeWaitTime);
+            yield return fader.FadeIn(fadeInTime);
+
+            Destroy(gameObject);
+        }
+
+        private void UpdatePlayer(Portal otherPortal)
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+            player.transform.position = otherPortal.spawnPoint.position;
+            player.transform.rotation = otherPortal.spawnPoint.rotation;
+        }
+
+        private Portal GetOtherPortal()
+        {
+            foreach (Portal portal in FindObjectsOfType<Portal>())
+            {
+                if (portal == this) { continue; }
+                if (portal.destination != destination) { continue; }
+
+                return portal;
+            }
+
+            return null;
+        }
     }
 }
