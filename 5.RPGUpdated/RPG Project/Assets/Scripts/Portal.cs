@@ -29,7 +29,7 @@ namespace RPG.SceneManagement
         }
 
         private IEnumerator Transition()
-        {   //todo bug with multiple portals if multiple portals spawn and get placed into dontdestroyonload
+        {   
             if (sceneToLoad < 0)
             {
                 Debug.LogError("Scene to load not set.");
